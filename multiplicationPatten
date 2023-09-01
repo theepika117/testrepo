@@ -1,0 +1,63 @@
+######## Problem  4  ###############
+
+#print a multiplication table like below.
+#get user intput for start and end numbers. 
+#the following example uses 1 to 5.
+'''
+     1  2  3  4  5
+  ********************
+1 |  1  2  3  4  5
+2 |  2  4  6  8 10
+3 |  3  6  9 12 15
+4 |  4  8 12 16 20
+5 |  5 10 15 20 25
+
+'''
+
+#getting starting number
+start_num = int(input("Enter the starting number : "))
+#getting last number
+last_num = int(input("Enter the ending number : "))
+
+        
+#checking whether user has entered both the integers as negative integer
+if start_num <0 and last_num < 0 :
+    print("Both the numbers are negative integers")
+    
+    #if last number is greater than first number,we need to swap them
+    if start_num < last_num :
+        start_num,last_num = last_num,start_num
+    
+    print(" ",end = " ")
+    #initializing outer loop
+    for x in range (last_num,start_num+1) :
+        print(x,end = " ")
+    print()
+    print(f"*"*18)
+    for x in range (last_num,start_num+1) :
+        print(x," |\t",end = " ")
+        
+        #initializing inner loop
+        for y in range (last_num,start_num+1) :
+            print(x*y,end = " ")
+        print()    
+
+else :
+    #in case one of the integer is negative or start number is greater than last number then we need to swap them
+    if start_num > last_num :
+        start_num,last_num = last_num,start_num
+    
+    print("",end = " ")
+    for x in range (start_num,last_num+1) :
+        print(x,end = " ")
+    print()
+    print(f"*"*18)
+    
+    #initializing outer loop
+    for x in range (start_num,last_num+1) :
+        print(x," |\t",end = " ")
+        
+        #initializing inner loop
+        for y in range (start_num,last_num+1) :
+            print(x*y,end = " ")
+        print()
