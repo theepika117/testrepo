@@ -1,0 +1,30 @@
+######## Problem  1 ###############
+# Get and print the 2 marks each for 3 students. Also, get each studen't name
+# output should be
+# Mark 1 for Student 1 is 55
+# Mark 2 for Student 1 is 67
+# Mark 1 for Student 2 is 56 
+
+#creating seperate list for student name, mark1 and mark 2
+student_mark1 = list()
+student_mark2 = list()
+student_name = list()
+
+#initiating a for loop to get the values from user and append it to the respective lists.
+#As the number of students are specified to be 3 in the question we shall set the range to be 3
+for student in range (3) :
+    name = input(f"Enter Student {student+1} Name : ")
+    student_name.append(name)
+    mark1 = int(input(f"Enter mark 1 of Student {student+1} : "))
+    student_mark1.append(mark1)
+    mark2 = int(input(f"Enter mark 2 of Student {student+1} : "))
+    student_mark2.append(mark2)
+    print(f"*"*20)
+
+#printing as per given in the question using for loop
+for x in range(0,3) :
+    print(f"Student {x+1} name : {student_name[x]}")
+    print(f"Mark 1 for Student {x+1} is {student_mark1[x]}")
+    print(f"Mark 2 for Student {x+1} is {student_mark2[x]}")
+    
+        

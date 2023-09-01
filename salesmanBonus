@@ -1,0 +1,30 @@
+############## Problem  3  #################### 
+#Calculate the monthly salary for the phone salesman
+#Base monthly pay Rs10000. 
+#For every 5 phones sold, Rs 5000 bonus.
+#For every phone aftr the first 5 phones, Rs1100 per phone bonus.
+#If the salesman's salary is more than Rs20000 in the previous month and sells 20 or more phones 
+# this month also, then he gets additional Rs5000.
+
+monthlySalesList = [5,23,21,14,23,12,4,12,22,22,34,12]  # Sample number of phones sold in each month in a year
+
+previousMonthSalary = 0      #initialized as 0 to facilitate calculation inside the loop
+basePay = 10000              #given in the problem statement
+
+#initializing for loop to traverse the list
+for month, phoneCount in enumerate(monthlySalesList) :
+    bonus = 0               #initializing it as 0 at every loop lets us calculate bonus for every individual month
+
+    if phoneCount >= 5 :
+        bonus += 5000
+        additionalBonus = (phoneCount-5) * 1100
+        bonus += additionalBonus 
+    
+    #calculating current month salary
+    currentMonthSalary = basePay + bonus
+    if previousMonthSalary >= 20000 and phoneCount >=20 :
+        additionalBonus1 = 5000     #given in problem statement
+        currentMonthSalary += additionalBonus1
+    
+    #printing the calculated salary for this month
+    print(f"Calculated salary for month {month+1} is {currentMonthSalary}")
