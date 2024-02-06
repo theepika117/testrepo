@@ -18,7 +18,7 @@ def get_tradeable_symbols():
     f.close()
     with open("generatedSymbol.txt", "r") as file:
         file_contents = file.read()
-    print("Contents of generatedSymbol.txt:")
-    print(file_contents)
+    #print("Contents of generatedSymbol.txt:")
+    #print(file_contents)
 
     return symbol_list

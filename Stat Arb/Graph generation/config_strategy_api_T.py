@@ -18,9 +18,9 @@ from pybit.unified_trading import HTTP
 
 # CONFIG
 
-timeframe = 120                                  #60 min interval
+timeframe = 120                                 #60 min interval
 kline_limit = 1000                               #max limit of kline. You can only get a max of 200 kline at a time acc to API
-z_score_window = 60                            #z score for past 21 days
+z_score_window = 60                            #z score for past 60 days
 
 
 
