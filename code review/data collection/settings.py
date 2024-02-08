@@ -10,4 +10,4 @@ window = 60  # Z Score using the average of last n candles; Higher value for les
 #generating a list of symbol response according to the API doc
 symbols = session.get_instruments_info(category="linear")           
 if symbols["retMsg"] == "OK":                                       #retMsg == ok indicates that the retrieval of instruments was successful   
-    symbols = symbols["result"]["list"]                             #symbols is a variable containg list of symbols
+    symbols = symbols["result"]["list"]                             #symbols is a variable containg list of instruments info
