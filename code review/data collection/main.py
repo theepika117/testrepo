@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
     # Getting all available symbols
     print("Fetching available instruments...")
-    response = instruments()
+    response = instruments()                                                        #fetches info of avl instruments
 
     # Saving price history data
     print(f"Successfully fetched {len(response)} total symbols")
