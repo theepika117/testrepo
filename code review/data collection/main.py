@@ -19,7 +19,7 @@ if __name__ == "__main__":
     print(f"Successfully fetched {len(response)} total symbols")
     print("Constructing and saving price data in JSON...")
     if len(response) > 0:
-        store_data(response.values())
+        store_data(response.values())                                               #stores the price data of symbols that has diverse closing price through store_data() of store_Data module
 
     # Getting Co-integrated pairs
     print("Calculating co-integration...")
