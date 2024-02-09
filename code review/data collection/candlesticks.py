@@ -25,7 +25,7 @@ def get_candles(symbol):
     candles["list"] = [[float(price) for price in candle] for candle in candles["list"]]                    #it stores the API response data of string datatype in float datatype for future computation
 
 
-    return candles if len(candles["list"]) == limit else {}                                                 #returns only those candles with price details
+    return candles if len(candles["list"]) == limit else {}                                                 #returns only those candles with limit number of price record history
 
 
 
