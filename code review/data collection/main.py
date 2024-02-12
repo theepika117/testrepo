@@ -26,7 +26,7 @@ if __name__ == "__main__":
     with open("data.json") as file:
         price_data = json.load(file)
         if len(price_data) > 0:
-            pairs = cointegrated_pairs(price_data)
+            pairs = cointegrated_pairs(price_data)                                  #dataFrames containing various parameters of cointegrated pairs
 
     # Plotting charts and saving for backtesting
         if len(price_data) > 0 and pairs is not None:
@@ -35,4 +35,4 @@ if __name__ == "__main__":
             instrument_1 = pairs_data.iloc[index]['Instrument-1']
             instrument_2 = pairs_data.iloc[index]['Instrument-2']
             print("Plotting charts...")
-            plot_charts(instrument_1, instrument_2, price_data)
+            plot_charts(instrument_1, instrument_2, price_data)                     #plots chart
