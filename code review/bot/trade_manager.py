@@ -13,7 +13,7 @@ def trade(switch):
     hot = False
 
     # Calculating the latest z-score data
-    zscore, positive_signal = z_score()#continue here
+    zscore, positive_signal = z_score()
 
     if abs(zscore) > trigger:
 
@@ -26,8 +26,8 @@ def trade(switch):
     if hot and switch == 0:
 
         # Getting trading history to calculate liquidity
-        liquidity_1, ltp_1 = liquidity(instrument_1)
-        liquidity_2, ltp_2 = liquidity(instrument_2)
+        liquidity_1, ltp_1 = liquidity(instrument_1)                                                        #returns avg liquidity and latest trading size of instrument 1
+        liquidity_2, ltp_2 = liquidity(instrument_2)                                                        #returns avg liquidity and latest trading size of instrument 2
 
         # Deciding long and short tickers
         if positive_signal:
@@ -46,10 +46,10 @@ def trade(switch):
             ltp_short = ltp_long
 
         # Filling targets
-        capital_long = capital * 0.5
+        capital_long = capital * 0.5                                                                      #50% of the capital is assigned to capital_long and remaining to capital_short
         capital_short = capital - capital_long
-        target_long = liquidity_long * ltp_long
-        target_short = liquidity_short * ltp_short
+        target_long = liquidity_long * ltp_long                                                           #capital that could be invested in the long position on the basis of its liquidity and market price
+        target_short = liquidity_short * ltp_short                                                        #capital that could be invested in the short position on the basis of its liquidity and market price
         initial_capital = min(target_long, target_short)
 
         # Making sure that initial capital does not exceed limits set in settings

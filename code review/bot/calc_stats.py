@@ -52,9 +52,9 @@ def z_score():
     # Getting latest candles
     series_1, series_2 = candles()                                                                                              #close prices are fetched
 
-    if len(series_1) > 0 and len(series_2) > 0:
+    if len(series_1) > 0 and len(series_2) > 0:                                                                                 #this condition is aldready checked
 
-        # Replacing last candle with latest mid-price from orderbook
+        # Replacing last candle with latest mid-price from orderbook. this ensures that the time series used for z-score calculation stays up-to-date, 
         series_1 = series_1[:-1]
         series_2 = series_2[:-1]
         series_1.append(mid_price_1)

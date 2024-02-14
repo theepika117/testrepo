@@ -54,16 +54,16 @@ def liquidity(ticker):
         category="linear",
         symbol=ticker,
         limit=30,
-    )
+    )                                                                                 #fetches latest trade history of the instrument
 
     qty_list = []  # Formatted response data
     if "result" in trades.keys():
         for trade in trades["result"]["list"]:
-            qty_list.append(float(trade["size"]))
+            qty_list.append(float(trade["size"]))                                     #appends the quantity of asset traded
 
     # Calculating and returning the average liquidity value
     if len(qty_list) > 0:
-        avg_liq = sum(qty_list) / len(qty_list)
-        latest_price = float(trades["result"]["list"][0]["price"])
+        avg_liq = sum(qty_list) / len(qty_list)                                       #calculating avg liquidity
+        latest_price = float(trades["result"]["list"][0]["price"])                    #price at which the trade happened
         return avg_liq, latest_price
     return 0, 0

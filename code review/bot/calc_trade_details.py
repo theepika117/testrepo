@@ -13,8 +13,8 @@ def calc_trade_details(orderbook, direction="Long", capital=0):
 
     if orderbook:
         # Rounding the prices and quantities
-        price_round = rounding_1 if orderbook["result"]["s"] == instrument_1 else rounding_2                            #rounding value(no of decimal points in min price) according to the symbol
-        quantity_round = qty1_rounding if orderbook["result"]["s"] == instrument_1 else qty2_rounding                   #rounding value(no of decimal points in min orderqty) according to the symbol
+        price_round = rounding_1 if orderbook["result"]["s"] == instrument_1 else rounding_2                            #rounding value(no of decimal points in min price according to the symbol
+        quantity_round = qty1_rounding if orderbook["result"]["s"] == instrument_1 else qty2_rounding                   #rounding value(no of decimal points in min orderqty according to the symbol
 
         # Organising prices
         bid_prices = [float(level[0]) for level in orderbook["result"]["b"]]                                            #stores bit order price
