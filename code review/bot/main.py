@@ -52,13 +52,13 @@ if __name__ == "__main__":
         isPTickerActive = check_orders(instrument_1)
         isNTickerActive = check_orders(instrument_2)
         
-        checks_all = [isPTickerOpen[0], isNTickerOpen[0], isPTickerActive[0], isNTickerActive[0]]                                   #could have avoided this variable
+        checks_all = [isPTickerOpen[0], isNTickerOpen[0], isPTickerActive[0], isNTickerActive[0]]                                   
         isNewTrades = not any(checks_all)
 
         # Saving status
         status_dict["message"] = "Initial checks made..."
         status_dict["checks"] = checks_all
-        save_status(status_dict)
+        save_status(status_dict)                                                                                #why is this neccessary?
 
         # Checking for signal and place new trades
         if isNewTrades and switch == 0:
