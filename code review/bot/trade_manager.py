@@ -26,8 +26,8 @@ def trade(switch):
     if hot and switch == 0:
 
         # Getting trading history to calculate liquidity
-        liquidity_1, ltp_1 = liquidity(instrument_1)                                                        #returns avg liquidity and latest trading size of instrument 1
-        liquidity_2, ltp_2 = liquidity(instrument_2)                                                        #returns avg liquidity and latest trading size of instrument 2
+        liquidity_1, ltp_1 = liquidity(instrument_1)                                                        #returns avg liquidity and latest trading price of instrument 1
+        liquidity_2, ltp_2 = liquidity(instrument_2)                                                        #returns avg liquidity and latest trading price of instrument 2
 
         # Deciding long and short tickers
         if positive_signal:
@@ -50,12 +50,12 @@ def trade(switch):
         capital_short = capital - capital_long
         target_long = liquidity_long * ltp_long                                                           #capital that could be invested in the long position on the basis of its liquidity and market price
         target_short = liquidity_short * ltp_short                                                        #capital that could be invested in the short position on the basis of its liquidity and market price
-        initial_capital = min(target_long, target_short)
+        initial_capital = min(target_long, target_short)                                                  #The goal is to balance the allocation of capital between long and short positions, making sure the trading strategy is not heavily biased towards one side
 
         # Making sure that initial capital does not exceed limits set in settings
         if limit_order:
             if initial_capital > capital_long:
-                initial_capital = capital_long
+                initial_capital = capital_long                                                            #this is basically to gain a winning edge in trading
         else:
             initial_capital = capital_long
 
@@ -64,9 +64,13 @@ def trade(switch):
         balance_short = capital_short
 
         # Trading until filled or signal is false
+
+
         status_long = ""
         status_short = ""
-        counts_long = 0
+
+        #flag to track order placement
+        counts_long = 0                                                 
         counts_short = 0
 
         while switch == 0:

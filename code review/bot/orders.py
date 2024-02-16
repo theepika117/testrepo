@@ -54,8 +54,8 @@ def order(ticker, direction, capital):
     orderbook = session.get_orderbook(category="linear", symbol=ticker)
 
     if orderbook:
-        mid_price, stop_loss, quantity = calc_trade_details(orderbook, direction, capital)
-        if quantity > 0:
+        mid_price, stop_loss, quantity = calc_trade_details(orderbook, direction, capital)                                  
+        if quantity > 0:                                                                                                        #checking if there exists some quantity that the trader can buy or sell in market
             response = call_order(ticker, mid_price, quantity, direction, stop_loss)
             if "result" in response.keys() and "orderId" in response["result"]:
                 return response["result"]["orderId"]
