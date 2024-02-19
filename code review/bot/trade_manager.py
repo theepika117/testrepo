@@ -15,7 +15,7 @@ def trade(switch):
     # Calculating the latest z-score data
     zscore, positive_signal = z_score()
 
-    if abs(zscore) > trigger:
+    if abs(zscore) > trigger:                                                                              #ensuring Z-score is greater than minimum value
 
         # Activating hot trigger
         hot = True
@@ -77,14 +77,14 @@ def trade(switch):
 
             # Placing long order
             if counts_long == 0:
-                order_long_id = order(long_ticker, "Long", initial_capital)
-                counts_long = 1 if order_long_id else 0
+                order_long_id = order(long_ticker, "Long", initial_capital)                     #places long order and orderID is returned
+                counts_long = 1 if order_long_id else 0                                         #sets the flag to 1 for successful order placement
                 balance_long = balance_long - initial_capital
 
             # Placing shorting order
             if counts_short == 0:
-                order_short_id = order(short_ticker, "Short", initial_capital)
-                counts_short = 1 if order_short_id else 0
+                order_short_id = order(short_ticker, "Short", initial_capital)                  #places short order and orderID is returned
+                counts_short = 1 if order_short_id else 0                                       #sets the flag to 1 for successful order placement
                 balance_short = balance_short - initial_capital
 
             # Updating signal side
