@@ -95,7 +95,7 @@ def trade(switch):
 
             # Handling switch for Market orders
             if not limit_order and counts_long and counts_short:
-                switch = 1
+                switch = 1                                                                          #if the order is not limit order and both counts_long and counts_short contains non zero values, the switch is det to 1
 
             # Allowing some time for the API
             time.sleep(3)
@@ -107,7 +107,7 @@ def trade(switch):
 
                     # Checking long order status
                     if counts_long == 1:
-                        status_long = review_order(long_ticker, balance_long)
+                        status_long = review_order(long_ticker, balance_long)#continue
 
                     # Checking short order status
                     if counts_short == 1:
