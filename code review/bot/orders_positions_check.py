@@ -3,14 +3,14 @@ from settings import session_private
 
 def check_positions(ticker):
     """Checks for any open positions and returns true or false accordingly"""
-    positions = session_private.get_positions(category="linear", symbol=ticker)                     #fetches position data
+    positions = session_private.get_positions(category="linear", symbol=ticker)                     #fetches trading position data
     if all(("retMsg" in positions.keys(), positions["retMsg"] == "OK",
             positions["result"]["list"] != [])):                                                    #checking for successful response        
         for item in positions["result"]["list"]:
             if float(item["size"]) > 0:
                 price = float(item["avgPrice"]) if not len(item["avgPrice"]) == 0 else 0
                 qty = float(item["size"])
-                return True, price, qty                                                             #returns price and quantity for successful response
+                return True, price, qty                                                             #returns avg price and quantity for successful response
     return [False, 0, 0]
 
 

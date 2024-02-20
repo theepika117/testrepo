@@ -64,7 +64,7 @@ if __name__ == "__main__":
         if isNewTrades and switch == 0:
             status_dict["message"] = "Managing new trades..."
             save_status(status_dict)
-            switch, signal_side = trade(switch)
+            switch, signal_side = trade(switch)                                                                 #fetches switch and signal side, switch = 1 indicates cancelled order
 
         if switch == 1:
             # Calculating the latest z-score
@@ -72,7 +72,7 @@ if __name__ == "__main__":
 
             # Closing positions
             if signal_side == "Positive" and zscore < 0:
-                switch = 2
+                switch = 2                                                                                      #if z-score is negative and signal_side is positive or if the z-score is positive and signal_side is negative, switch is made to be 2
             if signal_side == "Negative" and zscore >= 0:
                 switch = 2
 
