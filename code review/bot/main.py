@@ -44,27 +44,27 @@ if __name__ == "__main__":
 
         # Checking if there's any open trades
         
-        #to find average price and num of coins in open positions
+        #to find average price and num of coins in open positions [True/False, price, qty]
         isPTickerOpen = check_positions(instrument_1)                                   
         isNTickerOpen = check_positions(instrument_2)
         
-        #to fetch order status and quantity of the coin
+        #to fetch order status and quantity of the coin           [True/False, price, qty, status]
         isPTickerActive = check_orders(instrument_1)
         isNTickerActive = check_orders(instrument_2)
         
-        checks_all = [isPTickerOpen[0], isNTickerOpen[0], isPTickerActive[0], isNTickerActive[0]]                                   
+        checks_all = [isPTickerOpen[0], isNTickerOpen[0], isPTickerActive[0], isNTickerActive[0]]               #checks_all = True indicates open positions or active orders                          
         isNewTrades = not any(checks_all)
 
         # Saving status
         status_dict["message"] = "Initial checks made..."
         status_dict["checks"] = checks_all
-        save_status(status_dict)                                                                                #why is this neccessary?
+        save_status(status_dict)                                                                                
 
         # Checking for signal and place new trades
         if isNewTrades and switch == 0:
             status_dict["message"] = "Managing new trades..."
             save_status(status_dict)
-            switch, signal_side = trade(switch)                                                                 #fetches switch and signal side, switch = 1 indicates cancelled order
+            switch, signal_side = trade(switch)                                                                 #fetches switch and signal side, switch = 1 indicates cancelled order or order with complete status
 
         if switch == 1:
             # Calculating the latest z-score
